@@ -74,9 +74,16 @@ web_modules/
 .cache
 .parcel-cache
 
-# Next.js build output
+# =====================
+# Next.js
+# =====================
 .next
 out
+
+# =====================
+# Generic build output
+# =====================
+build
 
 # Nuxt.js build / generate output
 .nuxt
@@ -125,7 +132,9 @@ dist
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
-# yarn v3
+# =====================
+# Yarn v3
+# =====================
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -137,3 +146,9 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# =====================
+# Vercel
+# =====================
+.vercel
+
