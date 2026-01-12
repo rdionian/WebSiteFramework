@@ -1,0 +1,43 @@
+/* =========================================================
+   About Section
+   ---------------------------------------------------------
+   Two-column layout on larger screens.
+   Stacks vertically on mobile.
+   ========================================================= */
+
+.about {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 960px;
+  margin: 4rem auto 4rem;
+  align-items: center;
+}
+
+/* Image container */
+.image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Text content */
+.content h2 {
+  margin-bottom: 1rem;
+}
+
+.content p {
+  line-height: 1.6;
+}
+
+/* =========================================================
+   Desktop Layout
+   ---------------------------------------------------------
+   Image on the left, text on the right
+   ========================================================= */
+
+@media (min-width: 800px) {
+  .about {
+    grid-template-columns: 1fr 1.5fr;
+  }
+}

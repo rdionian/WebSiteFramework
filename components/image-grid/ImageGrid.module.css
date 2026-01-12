@@ -1,0 +1,59 @@
+/* =========================================================
+   Image Grid Component
+   ---------------------------------------------------------
+   Responsive grid for displaying image-based content
+   such as photography or featured work.
+   Base styles first, responsive overrides below.
+   ========================================================= */
+
+/* =========================================================
+   Base Grid Styles (Mobile-First)
+   ========================================================= */
+
+.grid {
+  display: grid;
+
+  /* Single-column layout for mobile devices */
+  grid-template-columns: 1fr;
+
+  /* Consistent spacing between images */
+  gap: 1.5rem;
+}
+
+/* =========================================================
+   Image Styling
+   ========================================================= */
+
+.grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* =========================================================
+   Responsive Layout Overrides
+   ---------------------------------------------------------
+   Increase column count at defined breakpoints to keep
+   images large and readable across screen sizes.
+   ========================================================= */
+
+/* Tablet: 2 columns */
+@media (min-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop: 3 columns */
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Large Desktop: cap at 4 columns */
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

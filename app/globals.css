@@ -1,16 +1,22 @@
-@import "tailwindcss";
+/* =========================================================
+   Global CSS Variables
+   ---------------------------------------------------------
+   Define the base color scheme for the entire site.
+   Components should reference these variables instead
+   of hard-coding colors.
+   ========================================================= */
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* =========================================================
+   Dark Mode Support
+   ---------------------------------------------------------
+   Automatically switches variables based on the user's
+   system preference. No JavaScript required.
+   ========================================================= */
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -19,8 +25,133 @@
   }
 }
 
+/* =========================================================
+   Base Document Reset
+   ---------------------------------------------------------
+   Establishes predictable defaults and enables a full-
+   height layout for the sticky footer pattern.
+   ========================================================= */
+
+html,
 body {
+  height: 100%;
+  margin: 0;
+}
+
+/* =========================================================
+   App Layout (Sticky Footer Foundation)
+   ---------------------------------------------------------
+   This flex column layout guarantees that:
+   - The footer stays at the bottom of the viewport
+     when content is short
+   - The footer moves down naturally when content grows
+   ========================================================= */
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================================================
+   Main Content Area
+   ---------------------------------------------------------
+   This element expands to fill available vertical space,
+   pushing the footer to the bottom of the viewport when
+   necessary.
+   ========================================================= */
+
+main {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+/* =========================================================
+   Header / Toolbar Styles (Global)
+   ---------------------------------------------------------
+   The header appears on every page, so base layout styles
+   live here rather than in a page-specific CSS module.
+   ========================================================= */
+
+header {
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 1.5rem;
+}
+
+header nav {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =========================================================
+   Footer Styles (Global)
+   ---------------------------------------------------------
+   The footer is global and should never shrink or float.
+   These styles ensure it stays visually distinct and
+   structurally stable at the bottom of the page.
+   ========================================================= */
+
+footer {
+  flex-shrink: 0;
+  border-top: 1px solid #ddd;
+  padding: 2rem 1.5rem;
+  margin-top: 4rem;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+footer a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* =========================================================
+   Section Wrappers
+   ---------------------------------------------------------
+   Used to visually separate major sections of the page.
+   ========================================================= */
+
+.section {
+  width: 100%;
+  padding: 4rem 1.5rem;
+}
+
+.section--light {
+  background-color: #ffffff;
+}
+
+.section--muted {
+  background-color: #f5f5f5;
+}
+
+/* Content inside sections stays constrained */
+.section--inner {
+  max-width: 960px;
+  margin: 0 auto;
 }
