@@ -1,0 +1,59 @@
+/* =========================================================
+   Callout / CTA
+   ---------------------------------------------------------
+   Used to prompt user action without being aggressive.
+   ========================================================= */
+
+.callout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  padding: 3rem;
+  border-radius: 6px;
+
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Text block */
+.text h2 {
+  margin: 0 0 0.5rem;
+  color: var(--color-primary);
+}
+
+.text p {
+  margin: 0;
+  max-width: 40rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Button */
+.button {
+  align-self: flex-start;
+
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+
+  background-color: var(--color-primary);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Hover affordance */
+.button:hover {
+  background-color: #a81f1f;
+}
+
+/* =========================================================
+   Desktop Layout
+   ========================================================= */
+
+@media (min-width: 800px) {
+  .callout {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

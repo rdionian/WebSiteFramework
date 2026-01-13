@@ -1,37 +1,30 @@
 export function Footer() {
   return (
     <footer>
-      <nav aria-label="Social links">
-        <ul>
-          <li>
-            <a
-              href="https://instagram.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Instagram
-            </a>
-          </li>
+      <p>© {new Date().getFullYear()} Northward Journal</p>
 
-          <li>
-            <a
-              href="https://facebook.com/yourusername"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Facebook
-            </a>
-          </li>
-
-          <li>
-            <a href="mailto:youremail@example.com">
-              Email
-            </a>
-          </li>
-        </ul>
-      </nav>
-
-      <p>© {new Date().getFullYear()} Your Name</p>
+      <ul>
+        <li>
+          <a href="https://instagram.com" aria-label="Instagram">
+            Instagram
+          </a>
+        </li>
+        <li>
+          <a href="https://facebook.com" aria-label="Facebook">
+            Facebook
+          </a>
+        </li>
+        <li>
+          <a href="https://youtube.com" aria-label="YouTube">
+            YouTube
+          </a>
+        </li>
+        <li>
+          <a href="mailto:youremail@example.com" aria-label="Email">
+            Email
+          </a>
+        </li>
+      </ul>
     </footer>
   );
 }

@@ -1,0 +1,40 @@
+/* =========================================================
+   Content Block
+   ---------------------------------------------------------
+   Neutral container for readable, editorial-style text.
+   Intended to be placed inside section wrappers.
+   ========================================================= */
+
+.contentBlock {
+  max-width: 700px;
+}
+
+/* Optional section title */
+.title {
+  margin: 0 0 1.5rem;
+
+  font-size: 1.5rem;
+  font-weight: 600;
+
+  /* Uses brand color, but stays subtle */
+  color: var(--color-primary);
+}
+
+/* Text body */
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Paragraph defaults */
+.body p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+/* Links inside text */
+.body a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}

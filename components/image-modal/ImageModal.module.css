@@ -1,0 +1,41 @@
+/* =========================================================
+   Image Modal (Lightbox)
+   ---------------------------------------------------------
+   Fullscreen image viewer for galleries and featured work.
+   ========================================================= */
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.content img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Close button */
+.close {
+  position: absolute;
+  top: -2rem;
+  right: -2rem;
+
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}

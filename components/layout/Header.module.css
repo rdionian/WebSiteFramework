@@ -1,0 +1,64 @@
+/* =========================================================
+   Site Toolbar (Scrolling, Translucent)
+   ========================================================= */
+
+.header {
+  background-color: rgba(22, 26, 27, 0);
+  backdrop-filter: blur(8px);
+
+  /* IMPORTANT */
+  position: static; /* or remove position entirely */
+}
+
+/* Nav container */
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 1.25rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Brand / site title */
+.brand {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  text-decoration: none;
+
+  /* Slightly stronger than nav links */
+  color: var(--foreground-dark);
+}
+
+/* Navigation list */
+.links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+
+  margin: 0;
+  padding: 0;
+}
+
+/* Navigation links */
+.links a {
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: var(--foreground-dark);
+  opacity: 0.65;
+
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+/* Hover affordance */
+.links a:hover {
+  opacity: 1;
+  color: var(--color-primary);
+}

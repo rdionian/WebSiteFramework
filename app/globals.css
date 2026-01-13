@@ -4,64 +4,67 @@
    Define the base color scheme for the entire site.
    Components should reference these variables instead
    of hard-coding colors.
+
+   Brand colors are derived from the Siebe Sol Productions
+   logo and are intentionally restrained so they support
+   content rather than overpower it.
    ========================================================= */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+  /* =====================================================
+     Editorial Accent (Used Sparingly)
+     ===================================================== */
 
-/* =========================================================
-   Dark Mode Support
-   ---------------------------------------------------------
-   Automatically switches variables based on the user's
-   system preference. No JavaScript required.
-   ========================================================= */
+  --color-primary: #5fa3a1; /* Aurora teal accent */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+
+  /* =====================================================
+     Cold Neutral Palette
+     ===================================================== */
+
+  /* Dark environment */
+  --background-dark: #16181a;    /* Cold charcoal */
+  --background-panel: #1f2225;   /* Raised surfaces / callouts */
+
+  --foreground-dark: #e6e8ea;    /* Soft cold white */
+  --foreground-muted: #aeb4ba;   /* Secondary text */
+
+  /* Light environment (hero only) */
+  --background: #f3f4f5;
+  --foreground: #1c1e21;
 }
 
 /* =========================================================
    Base Document Reset
-   ---------------------------------------------------------
-   Establishes predictable defaults and enables a full-
-   height layout for the sticky footer pattern.
    ========================================================= */
 
 html,
 body {
   height: 100%;
   margin: 0;
+  scroll-behavior: smooth;
 }
 
 /* =========================================================
    App Layout (Sticky Footer Foundation)
    ---------------------------------------------------------
-   This flex column layout guarantees that:
-   - The footer stays at the bottom of the viewport
-     when content is short
-   - The footer moves down naturally when content grows
+   The PAGE background is dark by default.
+   Individual sections opt into light backgrounds.
    ========================================================= */
 
 body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: var(--background);
-  color: var(--foreground);
+
+  background: var(--background-dark);
+  color: var(--foreground-dark);
+
   font-family: Arial, Helvetica, sans-serif;
 }
 
 /* =========================================================
    Main Content Area
-   ---------------------------------------------------------
-   This element expands to fill available vertical space,
-   pushing the footer to the bottom of the viewport when
-   necessary.
    ========================================================= */
 
 main {
@@ -72,14 +75,16 @@ main {
 /* =========================================================
    Header / Toolbar Styles (Global)
    ---------------------------------------------------------
-   The header appears on every page, so base layout styles
-   live here rather than in a page-specific CSS module.
+   Header remains light to anchor navigation and branding.
    ========================================================= */
 
-header {
+.site-header {
   border-bottom: 1px solid #ddd;
   padding: 1rem 1.5rem;
+  background-color: var(--background);
+  color: var(--foreground);
 }
+
 
 header nav {
   max-width: 960px;
@@ -102,27 +107,42 @@ header a {
   color: inherit;
 }
 
+header a:hover {
+  color: var(--color-primary);
+}
+
+.site-name {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
 /* =========================================================
    Footer Styles (Global)
    ---------------------------------------------------------
-   The footer is global and should never shrink or float.
-   These styles ensure it stays visually distinct and
-   structurally stable at the bottom of the page.
+   Footer stays dark to visually close the page.
    ========================================================= */
 
 footer {
   flex-shrink: 0;
-  border-top: 1px solid #ddd;
-  padding: 2rem 1.5rem;
+  border-top: 1px solid #333;
+  padding: 3rem 1.5rem 2.5rem;
   margin-top: 4rem;
+
+  background-color: var(--background-dark);
+  color: var(--foreground-dark);
+
+  /* NEW */
+  text-align: center;
 }
 
 footer ul {
   list-style: none;
   padding: 0;
+  margin: 1.5rem 0 0;
+
   display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  justify-content: center; /* NEW */
+  gap: 1.5rem;
 }
 
 footer a {
@@ -130,28 +150,81 @@ footer a {
   color: inherit;
 }
 
+footer p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--foreground-muted);
+}
+
+footer a:hover {
+  color: var(--color-primary);
+}
 
 /* =========================================================
    Section Wrappers
    ---------------------------------------------------------
-   Used to visually separate major sections of the page.
+   Sections define background intent.
    ========================================================= */
 
 .section {
   width: 100%;
   padding: 4rem 1.5rem;
+
+   /* NEW: offset anchor scrolling for toolbar height */
+  scroll-margin-top: 100px;
 }
 
+/* Light sections (hero, intro, readable content) */
 .section--light {
-  background-color: #ffffff;
+  background-color: var(--background);
+  color: var(--foreground);
 }
 
+/* Muted light sections */
 .section--muted {
   background-color: #f5f5f5;
+  color: var(--foreground);
 }
 
-/* Content inside sections stays constrained */
+/* Dark sections (image grids, immersive content) */
+.section--dark {
+  background-color: var(--background-dark);
+  color: var(--foreground-dark);
+}
+
+/* =========================================================
+   Section Inner Constraint
+   ---------------------------------------------------------
+   Keeps content readable while allowing full-width
+   background bands.
+   ========================================================= */
+
 .section--inner {
-  max-width: 960px;
+  max-width: 1200px;
   margin: 0 auto;
 }
+
+/* =========================================================
+   Section Headings (Brand Application)
+   ---------------------------------------------------------
+   Primary visible use of brand color.
+   ========================================================= */
+
+section h2 {
+  color: var(--color-primary);
+}
+
+/* =========================================================
+   Dark Mode Support
+   ---------------------------------------------------------
+   System dark mode only adjusts light sections.
+   Page remains intentionally dark.
+   ========================================================= */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+

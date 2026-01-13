@@ -3,57 +3,112 @@
    ---------------------------------------------------------
    Responsive grid for displaying image-based content
    such as photography or featured work.
-   Base styles first, responsive overrides below.
+
+   Design goals:
+   - Images should feel intentional, not thumbnail-sized
+   - Layout should scale cleanly from mobile to desktop
+   - Column count is capped to preserve visual impact
    ========================================================= */
 
 /* =========================================================
    Base Grid Styles (Mobile-First)
+   ---------------------------------------------------------
+   Single-column layout ensures images are large and
+   readable on small screens.
    ========================================================= */
 
 .grid {
   display: grid;
-
-  /* Single-column layout for mobile devices */
   grid-template-columns: 1fr;
-
-  /* Consistent spacing between images */
   gap: 1.5rem;
+
+  /* NEW: prevent images from touching container edges */
+  padding: 0 0rem;
 }
 
 /* =========================================================
    Image Styling
+   ---------------------------------------------------------
+   Images should fully fill their grid cell while
+   preserving aspect ratio.
    ========================================================= */
 
 .grid img {
   width: 100%;
   height: auto;
   display: block;
+
+  /* Optional polish — makes grid feel more deliberate */
+  border-radius: 2px;
+}
+
+/* =========================================================
+   Layout Variants
+   ---------------------------------------------------------
+   These modifiers override column behavior based on
+   intentional layout rules, not screen size.
+   ========================================================= */
+
+/* Exactly four images: keep them large and balanced */
+.grid--two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Default featured grid behavior */
+.grid--three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid--four {
+  grid-template-columns: repeat(2, 1fr);
 }
 
 /* =========================================================
    Responsive Layout Overrides
    ---------------------------------------------------------
-   Increase column count at defined breakpoints to keep
-   images large and readable across screen sizes.
+   Column count increases gradually, but is capped
+   to prevent images from becoming too small.
    ========================================================= */
 
-/* Tablet: 2 columns */
+/* Tablet: 2 columns
+   ---------------------------------------------------------
+   Images are still prominent, but we start to use
+   horizontal space more efficiently.
+*/
 @media (min-width: 600px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Desktop: 3 columns */
+/* Desktop: 3 columns (MAX)
+   ---------------------------------------------------------
+   This is the final layout for the finished site.
+   More than 3 columns would reduce image impact.
+*/
 @media (min-width: 900px) {
   .grid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* Large Desktop: cap at 4 columns */
-@media (min-width: 1200px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
+/* =========================================================
+   Special Case: Exactly 4 Images
+   ---------------------------------------------------------
+   Overrides responsive column rules when exactly
+   four images are present.
+   ========================================================= */
+
+/* Force 2 columns at tablet size */
+@media (min-width: 600px) {
+  .grid.grid--four {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Force 2 columns at desktop size */
+@media (min-width: 900px) {
+  .grid.grid--four {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
